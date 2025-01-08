@@ -20,20 +20,28 @@ def bruteLog(g, c, p):
             return i + 1
     return -1
 
-def EG_generate_keys("""TBC"""):
+def EG_generate_keys(p,g):
+    x = randint(1,int(p)-2)
+    h = pow(g,x,p)
 
-    return """TBC"""
+    return (x,h)
 
 ## multiplicative version
-def EGM_encrypt("""TBC"""):
-
-    return """TBC"""
+def EGM_encrypt(p,g,h,message):
+    k = randint(1,int(p)-2)
+    c1 = pow(g,k,p)
+    c2 = (message * pow(h,k,p)) % p
+    
+    return (c1,c2)
 
 ## additive version
-def EGA_encrypt("""TBC"""):
-    return """TBC"""
+##def EGA_encrypt("""TBC"""):
+##    return """TBC"""
 
 
-def EG_decrypt("""TBC"""):
-    return """TBC"""
+def EG_decrypt(x,p,c1,c2):
+    s = pow(c1,x,p)
+    message = (c2 * mod_inv(s, p)) % p
+
+    return int_to_bytes(message)
 
