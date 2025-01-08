@@ -20,13 +20,35 @@ def bruteLog(g, c, p):
             return i + 1
     return -1
 
+'''
+Function to generate keys pair.
+Name: EG_generate_keys
+Params:
+    - int p: prime number that define GF(p)
+    - int g: generator of the cyclic group GF(p)*
+Return:
+    - int x: private key
+    - int h: part of the public key {GF,p,q,h}
+'''
 def EG_generate_keys(p,g):
     x = randint(1,int(p)-2)
     h = pow(g,x,p)
 
     return (x,h)
 
-## multiplicative version
+'''
+Function that encrypt a message with the multiplicative
+version of the El Gamal public key encryption.
+Name: EGM_encrypt
+Params:
+    - int p: prime number that define GF(p)
+    - int g: generator of the cyclic group GF(p)*
+    - int h: part of the public key {GF,p,q,h}
+    - bytes message: sequence of bytes that correspond to the message
+Return:
+    - int c1: part of the cyphertext
+    - int c2: part of the cyphertext
+''' 
 def EGM_encrypt(p,g,h,message):
     k = randint(1,int(p)-2)
     c1 = pow(g,k,p)
@@ -34,7 +56,19 @@ def EGM_encrypt(p,g,h,message):
     
     return (c1,c2)
 
-## additive version
+'''
+Function that encrypt a message with the additive
+version of the El Gamal public key encryption.
+Name: EGA_encrypt
+Params:
+    - int p: prime number that define GF(p)
+    - int g: generator of the cyclic group GF(p)*
+    - int h: part of the public key {GF,p,q,h}
+    - bytes message: sequence of bytes that correspond to the message
+Return:
+    - int c1: part of the cyphertext
+    - int c2: part of the cyphertext
+'''
 def EGA_encrypt(p,g,h,message):
     k = randint(1,int(p)-2)
     c1 = pow(g,k,p)
@@ -42,6 +76,19 @@ def EGA_encrypt(p,g,h,message):
     
     return (c1,c2)
 
+'''
+Function that decrypt a message encrypted with
+the El Gamal public key encryption.
+Name: EG_decrypt
+Params:
+    - int x: private key
+    - int p: prime number that define GF(p)
+    - int c1: part of the cyphertext
+    - int c2: part of the cyphertext
+Return:
+    - bytes message: sequence of bytes that correspond to the
+    decrypted message
+'''
 def EG_decrypt(x,p,c1,c2):
     s = pow(c1,x,p)
     message = (c2 * mod_inv(s, p)) % p
