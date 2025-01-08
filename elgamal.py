@@ -35,9 +35,12 @@ def EGM_encrypt(p,g,h,message):
     return (c1,c2)
 
 ## additive version
-##def EGA_encrypt("""TBC"""):
-##    return """TBC"""
-
+def EGA_encrypt(p,g,h,message):
+    k = randint(1,int(p)-2)
+    c1 = pow(g,k,p)
+    c2 = (pow(g,message,p) * pow(h,k,p)) % p
+    
+    return (c1,c2)
 
 def EG_decrypt(x,p,c1,c2):
     s = pow(c1,x,p)
