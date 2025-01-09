@@ -105,7 +105,7 @@ Params:
     - int s: a component of a DSA digital signature
     - int p: prime number that define GF(p)
     - int q: prime factor of p - 1
-    - int q: generator of the q-order cyclic group of GF(p)*
+    - int g: generator of the q-order cyclic group of GF(p)*
     - int y: DSA public key
     - bytes message: sequence of bytes that correspond to the message
 Return:

@@ -28,7 +28,7 @@ def additiveTest():
     r4,c4 = EGA_encrypt(PARAM_P,PARAM_G,h,m4)
     r5,c5 = EGA_encrypt(PARAM_P,PARAM_G,h,m5)
 
-    r,c = (r1*r2*r3*r4*r5,c1*c2*c3*c4*c5)
+    r,c = (r1+r2+r3+r4+r5,c1+c2+c3+c4+c5)
 
     gm = EG_decrypt(x,PARAM_P,r,c)
     m = bruteLog(PARAM_G,gm,PARAM_P)

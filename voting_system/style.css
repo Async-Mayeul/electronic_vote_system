@@ -1,0 +1,74 @@
+/*
+ * #003049
+ * #d62828
+ * #f77f00
+ * #fcbf49
+ * #eae2b7
+ */
+
+/* Style général pour supprimer les marges */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style pour le header */
+#head {
+  background-color: #003049;
+  color: #d62828;
+  text-align: center;
+  margin-bottom: 30px; /* Espacement sous le titre */
+  width: 100%;
+}
+
+/* Conteneur principal pour les deux colonnes */
+#main {
+  background-color: #fcbf49;
+  color: #003049;
+  display: flex;
+  justify-content: center; /* Centre les colonnes horizontalement */
+  align-items: flex-start; /* Aligne les colonnes en haut */
+  gap: 40%; /* Espacement entre les colonnes */
+  width: 100%; /* S'adapte à toute la largeur */
+  height: 100%;
+}
+
+/* Style pour la colonne formulaire */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Espacement vertical entre les champs */
+}
+
+/* Alignement des champs (inputs) */
+form p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Largeur des lignes du formulaire */
+}
+
+form label {
+  flex: 1;
+  text-align: left;
+}
+
+form input, form select {
+  flex: 1;
+  margin-left: 10px; /* Espacement entre le label et le champ */
+}
+
+/* Colonne pour les textes */
+#info-column {
+  display: flex;
+  flex-direction: column; /* Texte en colonne */
+  align-items: center; /* Centre les éléments horizontalement */
+  gap: 20px; /* Espacement entre les textes */
+  text-align: center;
+}
