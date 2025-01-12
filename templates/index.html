@@ -1,0 +1,57 @@
+<!DOCTYPE>
+<html>
+  <header>
+    <link href="{{ url_for('static',filename='style.css') }}" rel="stylesheet"/>
+    <title>Electronic Vote System !</title>
+  </header>
+  <body>
+    <div id="head">
+      <h1>Welcome on VoteVault ! A secure electronic vote system.</h1>
+      <a href="/generation">Generate a signature !</a>
+    </div>
+    <div id="main">
+      <form action="/vote" method="post">
+        <p>
+          <label for="candidate_select">Choose a candidate</label>
+          <select name="candidate" id="candidate_select">
+            <option value="0">Brad Pitt</option>
+            <option value="1">George Clown</option>
+            <option value="2">François Militaire</option>
+            <option value="3">Mike Dyson</option>
+            <option value="4">Angelina Sapasse</option>
+          </select>
+        </p>
+        <p>
+          <p id="name">
+            <label for="voter_name">Enter your name: </label>
+            <input type="text" id="voter_name" name="voter-name"/>
+          </p>
+          <p id="surname">
+            <label for="voter_surname">Enter your surname: </label>
+            <input type="text" id="voter_surname" name="voter-surname"/>
+          </p>
+        </p>
+        <p id="id">
+          <label for="voter_id">Enter your id: </label>
+          <input type="text" id="voter_id" name="voter-id">
+        </p>
+        <p id="sign">
+          <label for="voter_key">Enter your key to sign: </label>
+          <input type="text" id="voter_key" name="voter-pKey">
+        </p>
+        <p>
+          <input type="submit" value="Vote !" id="vote" name="vote_button"/>
+        </p>
+      </form>
+      <div id="info-column">
+        {% if success %}
+          <p id="info_vote">{{ success }}</p>
+        {% else %}
+          <p id="info_vote">{{ error }}</p>
+        {% endif %}
+        <p id="counter">Nombre de votes (max 10): {{ votes }}</p>
+        <p id="resultat">Candidat élu: {{ candidate }}</p>
+      </div>
+    </div>
+  </body>
+</html>

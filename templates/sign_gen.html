@@ -1,0 +1,28 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='gen.css') }}">
+    <title>Generate Signature !</title>
+  </head>
+  <body>
+    <div>
+      <a href="/">Go to vote !</a>
+      <form action="/generate_signature" method="post">
+        <p>
+          <label for="voter_name">Enter your name: </label>
+          <input type="text" id="voter_name" name="voter-name"/>
+        </p>
+        <p>
+          <label for="voter_surname">Enter your surname: </label>
+          <input type="text" id="voter_surname" name="voter-surname">
+        </p>
+        <p>
+          <label for="voter_id">Enter your id: </label>
+          <input type="text" id="voter_id" name="voter-id">
+        </p>
+        <input type="submit" value="Generate your key !">
+      </form>
+      <p>Your key is: {{ privateKey }}</p>
+    </div>
+  </body>
+</html>

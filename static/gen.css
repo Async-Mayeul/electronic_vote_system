@@ -1,0 +1,84 @@
+/*
+ * Couleurs utilisées :
+ * #003049 : Bleu sombre
+ * #d62828 : Rouge vif
+ * #f77f00 : Orange
+ * #fcbf49 : Jaune doré
+ * #eae2b7 : Beige clair
+ */
+
+/* Style général pour supprimer les marges */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #eae2b7; /* Fond beige clair */
+  color: #003049; /* Texte bleu sombre */
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Conteneur principal */
+body > div {
+  display: flex;
+  justify-content: space-between; /* Espace entre le formulaire et le texte */
+  align-items: center;
+  width: 80%; /* Largeur du conteneur principal */
+  max-width: 1200px;
+  padding: 20px;
+  background-color: #fcbf49; /* Fond jaune doré */
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre légère */
+}
+
+/* Style pour le formulaire */
+form {
+  flex: 1; /* Prend l'espace disponible à gauche */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espacement entre les champs */
+}
+
+form p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+form label {
+  flex: 1; /* Largeur des labels */
+}
+
+form input {
+  flex: 2; /* Largeur des champs d'entrée */
+  padding: 8px;
+  border: 1px solid #003049;
+  border-radius: 5px;
+}
+
+/* Bouton de soumission */
+form input[type="submit"] {
+  background-color: #d62828; /* Rouge vif */
+  color: #eae2b7; /* Texte beige clair */
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+  background-color: #f77f00; /* Orange */
+}
+
+/* Style pour le texte "Your key" */
+p {
+  flex: 1; /* Prend l'espace disponible à droite */
+  text-align: right; /* Aligne le texte à droite */
+  font-size: 1.2em;
+}
+

@@ -1,6 +1,6 @@
 from algebra import mod_inv
 from Crypto.Hash import SHA256
-from random import randint
+from secrets import randbits
 
 ## parameters from MODP Group 24 -- Extracted from RFC 5114
 FAILURE = False
@@ -32,7 +32,7 @@ def DSA_generate_nonce(q):
     k_inverse = 0
 
     while True:
-        c = randint(1, int(q))
+        c = randbits(q.bit_length())
         if c <= ( int(q) - 2 ):
             k = c + 1
             k_inverse = mod_inv(k,int(q))
@@ -55,7 +55,7 @@ def DSA_generate_keys(p,q,g):
     y = 0
 
     while True:
-        c = randint(1, int(q))
+        c = randbits(q.bit_length())
         if c <= ( int(q) - 2 ):
             x = c + 1
             y = pow(g, x, p)
@@ -124,8 +124,8 @@ def DSA_verify(r,s,p,q,g,y,message):
         z = H(message)
         u1 = (z * w) % q
         u2 = (r * w) % q
-        v = ((pow(g,u1) * pow(y,u2)) % p) % q
-
+        v = ((pow(g,u1,p) * pow(y,u2,p)) % p) % q
+        
         if v == r:
             return SUCCESS
         else:

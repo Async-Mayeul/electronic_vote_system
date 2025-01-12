@@ -1,22 +1,14 @@
 from ecelgamal import *
+x,y = ECEG_generate_keys(BaseU,BaseV,p,ORDER)
+messages = [1,0,1,1,0]
+enc = [ECEG_encrypt(y,BaseU,BaseV,p,ORDER,m) for m in messages]
 
-print("starting...")
-(priv,pub) = ECEG_generate_keys(ORDER, (BaseU, BaseV), p)
+r,c = (1,0), (1,0)
 
-messages = [1, 0, 1, 1, 0]
-encrypted_messages = []
-for m in messages:
-    encoded_message = EGencode(m)
-    print("encoded message : " + str(encoded_message[0]) + "," + str(encoded_message[1]) + "\n")
-    encrypted_cipher = ECEG_encrypt(pub, encoded_message, (BaseU, BaseV), p, ORDER)
-    print("encrypted message : " + str(encrypted_cipher[0]) + "," + str(encrypted_cipher[1]) + "\n")
-    encrypted_messages.append(encrypted_cipher)
+for c1,c2 in enc:
+    r = add(r[0],r[1],c1[0],c1[1],p)
+    c = add(c[0],c[1],c2[0],c2[1],p)
 
-r = encrypted_messages[0][0] + encrypted_messages[1][0] + encrypted_messages[2][0] + encrypted_messages[3][0] + encrypted_messages[4][0]
-c = encrypted_messages[0][1] + encrypted_messages[1][1] + encrypted_messages[2][1] + encrypted_messages[3][1] + encrypted_messages[4][1]
-
-
-decrypted_cipher = ECEG_decrypt(priv, (r, c), p)
-print("decrypted message : " + str(decrypted_cipher[0]) + "," + str(decrypted_cipher[1]) + "\n")
-print("bruteforcing...")
-print(str(bruteECLog(decrypted_cipher[0], decrypted_cipher[1], p)))
+pm = ECEG_decrypt(x,r,c,p)
+m = bruteECLog(pm[0],pm[1],p)
+print(f'Message {m}')

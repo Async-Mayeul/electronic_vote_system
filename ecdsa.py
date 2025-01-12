@@ -111,8 +111,8 @@ def ECDSA_verify(r,s,Q_point,x,y,n,p,message):
         c = mod_inv(s,n)
         u_1 = (e*c) % n
         u_2 = (r*c) % n
-        x1,y1 = mult(u1,x,y,p)
-        x2,y2 = mult(u2,Q_point[0], Q_point[1],p)
+        x1,y1 = mult(u_1,x,y,p)
+        x2,y2 = mult(u_2,Q_point[0], Q_point[1],p)
         (i,j) = add(x1,y1,x2,y2,p)
         v = i % n
     else:

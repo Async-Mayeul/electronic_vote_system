@@ -72,3 +72,8 @@ form input, form select {
   gap: 20px; /* Espacement entre les textes */
   text-align: center;
 }
+
+a {
+  text-decoration: none;
+  color: #d62828;
+}
